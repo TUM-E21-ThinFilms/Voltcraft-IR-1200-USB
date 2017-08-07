@@ -30,7 +30,13 @@ class VoltcraftIR1200Protocol(Protocol):
         self.logger = logger
 
     def read(self, transport):
-        return self.parse_response(self.read_response(transport))
+        raw_response = self.read_response(transport)
+
+        resp = []
+        for el in raw_response:
+            resp.append(el)
+
+        return self.parse_response(resp)
 
     def parse_response(self, response):
         try:
