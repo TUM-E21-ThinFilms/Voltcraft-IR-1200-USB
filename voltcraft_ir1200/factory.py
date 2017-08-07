@@ -16,8 +16,8 @@
 from e21_util.transport import Serial
 from e21_util.log import get_sputter_logger
 from e21_util.ports import Ports
-from protocol import VoltrcraftIR1200Protocol
-from driver import VoltrcraftIR1200Driver
+from protocol import VoltcraftIR1200Protocol
+from driver import VoltcraftIR1200Driver
 
 class VoltcraftIR1200Factory:
     def get_logger(self):
@@ -30,5 +30,5 @@ class VoltcraftIR1200Factory:
         if device is None:
             device = Ports().get_port(Ports.DEVICE_VOLTCRAFT_IR_1200)
 
-        protocol = VoltrcraftIR1200Protocol(logger=logger)
-        return VoltrcraftIR1200Driver(Serial(device, 9600, 8, 'N', 1, 0.2), protocol)
+        protocol = VoltcraftIR1200Protocol(logger=logger)
+        return VoltcraftIR1200Driver(Serial(device, 9600, 8, 'N', 1, 0.2), protocol)
