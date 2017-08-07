@@ -16,14 +16,14 @@
 from e21_util.transport import Serial
 from e21_util.log import get_sputter_logger
 from e21_util.ports import Ports
-from protocol import VAT641Protocol
-from driver import VAT641Driver
+from protocol import VoltrcraftIR1200Protocol
+from driver import VoltrcraftIR1200Driver
 
 class VoltcraftIR1200Factory:
     def get_logger(self):
         return get_sputter_logger('Voltcraft IR 1200-50', 'voltcraft_ir1200.log')
 
-    def create_valve(self, device=None, logger=None):
+    def create_thermometer(self, device=None, logger=None):
         if logger is None:
             logger = self.get_logger()
 
