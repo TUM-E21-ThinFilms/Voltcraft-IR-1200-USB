@@ -14,18 +14,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import slave
+import e21_util
 
 from slave.protocol import Protocol
 from slave.transport import Timeout
-
 from response import Response
-
-import e21_util
 from e21_util.lock import InterProcessTransportLock
 from e21_util.error import CommunicationError
 
-class VoltcraftIR1200Protocol(Protocol):
 
+class VoltcraftIR1200Protocol(Protocol):
     def __init__(self, logger=None):
         self.logger = logger
 
@@ -55,8 +53,8 @@ class VoltcraftIR1200Protocol(Protocol):
 
     def clear(self, transport):
         with InterProcessTransportLock(transport):
-            while True:
-                try:
-                    transport.read_bytes(200)
-                except Timeout:
-                    return True
+            try:
+                while True:
+                    transport.read_bytes(21)
+            except Timeout:
+                return True
