@@ -33,4 +33,5 @@ class VoltcraftIR1200Driver(object):
         return self._protocol.read(self._transport)
 
     def get_temperature(self):
+        self.clear()
         return self.read().get_ir()
