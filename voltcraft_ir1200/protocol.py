@@ -55,6 +55,6 @@ class VoltcraftIR1200Protocol(Protocol):
         with InterProcessTransportLock(transport):
             try:
                 while True:
-                    transport.read_bytes(21)
-            except Timeout:
+                    transport.read_exactly(21)
+            except slave.transport.Timeout:
                 return True
