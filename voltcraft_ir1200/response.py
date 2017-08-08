@@ -80,6 +80,9 @@ class Response(object):
     def _compute_value(self, hex_list):
         assert len(hex_list) == 2
 
+        if hex_list[0] == 0xFF:
+            return (hex_list[0] * 256 + hex_list[1] - 0x10000) * 0.1
+
         return (hex_list[0] * 256 + hex_list[1]) * 0.1
 
     def __str__(self):
