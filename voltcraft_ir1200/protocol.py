@@ -53,8 +53,4 @@ class VoltcraftIR1200Protocol(Protocol):
 
     def clear(self, transport):
         with InterProcessTransportLock(transport):
-            try:
-                while True:
-                    transport.read_exactly(21)
-            except slave.transport.Timeout:
-                return True
+            transport.get_serial().reset_input_buffer()
